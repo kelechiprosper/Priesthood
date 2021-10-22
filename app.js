@@ -27,7 +27,7 @@ function addTask(e) {
     //create text node and append to li
     li.appendChild(document.createTextNode(taskInput.value));
     // create new link element
-
+    const link = document.createElement('a');
 
 
     e.preventDefault();
