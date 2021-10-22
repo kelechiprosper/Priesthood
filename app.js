@@ -28,6 +28,9 @@ function addTask(e) {
     li.appendChild(document.createTextNode(taskInput.value));
     // create new link element
     const link = document.createElement('a');
+    // Add class
+    link.className = 'delete-item secondary-content';
+    
 
 
     e.preventDefault();
