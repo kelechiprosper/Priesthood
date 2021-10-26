@@ -15,6 +15,7 @@ function loadEventListener() {
     taskList.addEventListener('click', removeTask);
     // clear task event
     clearBtn.addEventListener('click', clearTasks);
+    filter.addEventListener('keyup', filterTasks);
 
 }
 
@@ -70,4 +71,11 @@ function clearTasks(){
     //     taskList.removechild(taskList.firstchild);
     // }
     // https://jsperf.com/innerhtml-vs-removechild
+}
+
+// Filter Tasks
+function filterTasks(e) {
+    const text = e.target.value;
+
+    console.log(text);
 }
