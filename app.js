@@ -6,11 +6,15 @@ const filter = document.querySelector('#filter');
 const taskInput = document.querySelector('#task');
 
 // Load all event listener
-loadEventListeners();
+loadEventListener();
 
-function loadEventListeners() {
+function loadEventListener() {
     // Add task event
-    form.addEventListeners('submit', addTask);
+    form.addEventListener('submit', addTask);
+    // remove task event
+    taskList.addEventListener('click', removeTask);
+    // clear task event
+    clearBtn.addEventListener('click', clearTasks);
 
 }
 
@@ -31,11 +35,39 @@ function addTask(e) {
     // Add class
     link.className = 'delete-item secondary-content';
     // Add icon html
-    link.innerHTML = '<i class="fa fa-remove"></i>';
+     link.innerHTML = '<i class="far fa-calendar-times"></i>';
     // Append the link to li
     li.appendChild(link);
     
+    //Append li to ul
+    taskList.appendChild(li);
+
+    // Clear Input
+    taskInput.value = '';
+
 
 
     e.preventDefault();
+}
+
+//Remove Task
+function removeTask(e){
+    if(e.target.parentElement.classList.contains
+        ('delete-item')){
+    console.log(e.target);
+    if(confirm('Are you sure?')){
+    e.target.parentElement.parentElement.remove();
+    }
+        }
+}
+
+// clear Tasks
+function clearTasks(){
+    taskList.innerHTML = '';
+
+    // //Faster
+    // while(taskList.firstChild){
+    //     taskList.removechild(taskList.firstchild);
+    // }
+    // https://jsperf.com/innerhtml-vs-removechild
 }
