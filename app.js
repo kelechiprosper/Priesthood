@@ -114,6 +114,10 @@ function removeTask(e){
     console.log(e.target);
     if(confirm('Are you sure?')){
     e.target.parentElement.parentElement.remove();
+
+    // remove from ls
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+
     }
         }
 }
