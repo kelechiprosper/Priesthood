@@ -21,6 +21,43 @@ function loadEventListener() {
 
 }
 
+//Get Tasks from LS
+function getTasks() {
+    
+        let tasks;
+        if(localStorage.getItem('tasks') === null){
+            tasks = [];
+    
+        } else {
+            tasks = JSON.parse(localStorage.getItem('tasks'));
+        }
+        // tasks.push(task);
+    
+        // localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+
+    tasks.forEach(function(task){
+        // create li element
+    const li = document.createElement('li');
+    // Add class
+    li.className = 'collection-item';
+    //create text node and append to li
+    li.appendChild(document.createTextNode(task));
+    // create new link element
+    const link = document.createElement('a');
+    // Add class
+    link.className = 'delete-item secondary-content';
+    // Add icon html
+     link.innerHTML = '<i class="far fa-calendar-times"></i>';
+    // Append the link to li
+    li.appendChild(link);
+    
+    //Append li to ul
+    taskList.appendChild(li);
+
+    });
+}
+
 // Add Task
 function addTask(e) {
     if(taskInput.value === '') {
