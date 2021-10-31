@@ -122,6 +122,24 @@ function removeTask(e){
         }
 }
 
+// Remove from Ls
+function removeTaskFromLocalStorage(taskItem) {
+    let tasks;
+        if(localStorage.getItem('tasks') === null){
+            tasks = [];
+    
+        } else {
+            tasks = JSON.parse(localStorage.getItem('tasks'));
+        }
+
+        tasks.forEach(function(task, index){
+            if(taskItem.textContent === task){
+                task.splice(index, 1);
+            }
+        })
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
 // clear Tasks
 function clearTasks(){
     taskList.innerHTML = '';
@@ -131,6 +149,14 @@ function clearTasks(){
     //     taskList.removechild(taskList.firstchild);
     // }
     // https://jsperf.com/innerhtml-vs-removechild
+
+    // clear from LS
+    clearTaskFromLocalStorage();
+}
+
+// clear task form ls
+function clearTaskFromLocalStorage() {
+    localStorage.clear();
 }
 
 // Filter Tasks
